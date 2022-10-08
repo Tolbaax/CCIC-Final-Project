@@ -1,15 +1,10 @@
-import 'package:social_app/models/login.dart';
-
 abstract class RegisterStates {}
 
 class RegisterInitialState extends RegisterStates {}
 
 class RegisterLoadingState extends RegisterStates {}
 
-class RegisterSuccessState extends RegisterStates {
-  late final LoginModel loginModel;
-  RegisterSuccessState({required this.loginModel});
-}
+class RegisterSuccessState extends RegisterStates {}
 
 class RegisterErrorState extends RegisterStates {
   final String error;

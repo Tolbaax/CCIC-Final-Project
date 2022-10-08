@@ -1,21 +1,27 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:lottie/lottie.dart';
 import 'package:social_app/modules/register/cubit/cubit.dart';
 import 'package:social_app/shared/styles/colors.dart';
+import 'package:social_app/shared/styles/images.dart';
 
 class BuildProfileImage extends StatelessWidget {
-  const BuildProfileImage({Key? key}) : super(key: key);
+  final dynamic profileImage;
+  const BuildProfileImage({Key? key, required this.profileImage})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Stack(
         children: [
-          const BuildImage(),
+          BuildImage(
+            profileImage: profileImage,
+          ),
           Positioned(
-            bottom: 0.0,
-            right: 33.w,
+            bottom: 8.h,
+            right: 2.w,
             child: buildCameraIcon(context),
           ),
         ],
@@ -35,18 +41,18 @@ class BuildProfileImage extends StatelessWidget {
             boxShadow: [
               BoxShadow(
                 color: Colors.grey.shade400,
-                blurRadius: 5.0,
+                blurRadius: 5.0.r,
                 offset: const Offset(2, 5),
               ),
             ],
           ),
           child: CircleAvatar(
-            radius: 20,
+            radius: 80.r,
             backgroundColor: Colors.white,
             child: Icon(
               Icons.camera_alt_outlined,
-              color: AppColors.greyDark,
-              size: 2.4.h,
+              color: AppColors.darkCerulean,
+              size: 15.h,
             ),
           ),
         ),
@@ -57,37 +63,24 @@ class BuildProfileImage extends StatelessWidget {
 }
 
 class BuildImage extends StatelessWidget {
-  const BuildImage({Key? key}) : super(key: key);
+  final dynamic profileImage;
+  const BuildImage({Key? key, required this.profileImage}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    var profileImage = RegisterCubit.get(context).profileImage;
-    final image = const NetworkImage('imagePath');
-
-    return Center(
-      child: ClipOval(
-        child: Material(
-          child: Container(
-            height: 100.h,
-            width: 100.w,
-            clipBehavior: Clip.antiAlias,
-            decoration: BoxDecoration(
-              color: Colors.green.withOpacity(0.5),
-              shape: BoxShape.circle,
-            ),
-            child: Stack(
-              alignment: Alignment.center,
-              children: [
-                if (profileImage != null)
-                  Image.file(
-                    profileImage,
-                    fit: BoxFit.contain,
-                  ),
-                const Icon(Icons.camera_alt_outlined)
-              ],
-            ),
-          ),
-        ),
+    return Container(
+      height: 100.h,
+      width: 140.w,
+      clipBehavior: Clip.antiAlias,
+      decoration: BoxDecoration(
+        color: AppColors.darkCerulean.withOpacity(0.2),
+        shape: BoxShape.circle,
       ),
+      child: profileImage != null
+          ? Image.file(
+              profileImage!,
+              fit: BoxFit.cover,
+            )
+          : Lottie.asset(ImageAssets.profileImage),
     );
   }
 }

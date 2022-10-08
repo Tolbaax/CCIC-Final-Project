@@ -4,13 +4,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:social_app/modules/login/login_screen.dart';
 import 'package:social_app/modules/register/cubit/cubit.dart';
 import 'package:social_app/modules/register/cubit/states.dart';
-import 'package:social_app/shared/components/constants.dart';
 import 'package:social_app/shared/components/widgets/buttons.dart';
 import 'package:social_app/shared/components/widgets/logo.dart';
 import 'package:social_app/shared/components/widgets/navigation.dart';
+import 'package:social_app/shared/components/widgets/profileImage.dart';
 import 'package:social_app/shared/components/widgets/textFormFiled.dart';
 import 'package:social_app/shared/components/widgets/toastMessage.dart';
-import 'package:social_app/shared/network/lcoal/cache_helper.dart';
 import 'package:social_app/shared/resources/input_validator.dart';
 import 'package:social_app/shared/styles/colors.dart';
 
@@ -25,20 +24,9 @@ class RegisterScreen extends StatelessWidget {
         child: BlocConsumer<RegisterCubit, RegisterStates>(
           listener: (context, state) {
             if (state is RegisterSuccessState) {
-              if (state.loginModel.status!) {
-                CacheHelper.saveData(
-                  key: 'token',
-                  value: state.loginModel.data!.userDetails!.rememberToken,
-                ).then((value) {
-                  token = state.loginModel.data!.userDetails!.rememberToken;
-                  showToast(
-                      text: 'Registered Successfully',
-                      state: ToastState.success);
-                  navigateAndFinish(context, const LoginScreen());
-                });
-              } else {
-                showToast(text: state.loginModel.msg!, state: ToastState.error);
-              }
+              showToast(
+                  text: 'Registered Successfully', state: ToastState.success);
+              navigateAndFinish(context, const LoginScreen());
             }
           },
           builder: (context, state) {
@@ -84,41 +72,10 @@ class RegisterScreen extends StatelessWidget {
                                 SizedBox(
                                   height: 20.h,
                                 ),
-                                Text(
-                                  'Register',
-                                  style: TextStyle(
-                                    fontSize: 45.sp,
-                                    fontWeight: FontWeight.w500,
-                                    color: AppColors.black,
-                                  ),
-                                ),
-                                GestureDetector(
-                                  onTap: () {
-                                    cubit.getProfileImage();
-                                  },
-                                  child: Container(
-                                    height: 100.h,
-                                    width: 100.w,
-                                    clipBehavior: Clip.antiAlias,
-                                    decoration: BoxDecoration(
-                                      color: AppColors.darkCerulean
-                                          .withOpacity(0.3),
-                                      shape: BoxShape.circle,
-                                    ),
-                                    child: Stack(
-                                      alignment: Alignment.center,
-                                      children: [
-                                        if (cubit.profileImage != null)
-                                          Image.file(
-                                            cubit.profileImage!,
-                                            fit: BoxFit.contain,
-                                          ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
+                                BuildProfileImage(
+                                    profileImage: cubit.profileImage),
                                 SizedBox(
-                                  height: 15.h,
+                                  height: 20.h,
                                 ),
                                 DefaultTextFormFiled(
                                   controller: cubit.name,
@@ -129,7 +86,7 @@ class RegisterScreen extends StatelessWidget {
                                   validator: nameValidator,
                                 ),
                                 SizedBox(
-                                  height: 25.h,
+                                  height: 22.h,
                                 ),
                                 DefaultTextFormFiled(
                                   controller: cubit.email,
@@ -140,7 +97,7 @@ class RegisterScreen extends StatelessWidget {
                                   validator: emailValidator,
                                 ),
                                 SizedBox(
-                                  height: 25.h,
+                                  height: 22.h,
                                 ),
                                 DefaultTextFormFiled(
                                   controller: cubit.phone,
@@ -151,7 +108,7 @@ class RegisterScreen extends StatelessWidget {
                                   validator: phoneValidator,
                                 ),
                                 SizedBox(
-                                  height: 25.h,
+                                  height: 22.h,
                                 ),
                                 DefaultTextFormFiled(
                                   controller: cubit.password,

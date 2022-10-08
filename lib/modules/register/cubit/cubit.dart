@@ -39,7 +39,7 @@ class RegisterCubit extends Cubit<RegisterStates> {
   final TextEditingController email = TextEditingController();
   final TextEditingController password = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey();
-  late LoginModel loginModel;
+  LoginModel? loginModel;
   DioHelper dio = DioHelper();
   userRegister() async {
     if (formKey.currentState!.validate() && profileImage != null) {
@@ -53,8 +53,7 @@ class RegisterCubit extends Cubit<RegisterStates> {
       });
       await dio.postData(path: REGISTER, data: formData).then(
         (value) {
-          loginModel = LoginModel.fromJson(value.data);
-          emit(RegisterSuccessState(loginModel: loginModel));
+          emit(RegisterSuccessState());
         },
       ).catchError((error) {
         emit(RegisterErrorState(error.toString()));
