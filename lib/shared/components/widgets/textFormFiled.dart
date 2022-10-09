@@ -12,7 +12,9 @@ class DefaultTextFormFiled extends StatelessWidget {
   final Function()? onTab;
   final Function()? suffixTab;
   final IconData? suffix;
+  final IconData? prefix;
   final TextInputAction? textInputAction;
+  final EdgeInsetsGeometry? contentPadding;
   const DefaultTextFormFiled({
     Key? key,
     this.hintText,
@@ -22,10 +24,12 @@ class DefaultTextFormFiled extends StatelessWidget {
     this.validator,
     this.label,
     this.suffix,
+    this.prefix,
     this.onTab,
     this.suffixTab,
     this.onSaved,
     this.textInputAction,
+    this.contentPadding,
   }) : super(key: key);
 
   @override
@@ -45,11 +49,14 @@ class DefaultTextFormFiled extends StatelessWidget {
         labelText: label,
         labelStyle: TextStyle(color: Colors.grey.shade700),
         hintText: hintText,
-        contentPadding:
-            EdgeInsets.symmetric(horizontal: 15.sp, vertical: 17.sp),
+        contentPadding: contentPadding,
         suffixIcon: GestureDetector(
           onTap: suffixTab,
           child: Icon(suffix),
+        ),
+        prefixIcon: GestureDetector(
+          onTap: () {},
+          child: Icon(prefix),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(15.0.r),

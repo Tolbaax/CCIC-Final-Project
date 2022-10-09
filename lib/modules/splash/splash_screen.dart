@@ -2,7 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:social_app/layout/layout_screen.dart';
 import 'package:social_app/modules/login/login_screen.dart';
+import 'package:social_app/shared/components/constants.dart';
 import 'package:social_app/shared/components/widgets/navigation.dart';
 import 'package:social_app/shared/styles/images.dart';
 
@@ -19,7 +21,11 @@ class _SplashScreenState extends State<SplashScreen> {
     Timer(
       const Duration(seconds: 2),
       () {
-        navigateAndFinish(context, const LoginScreen());
+        if (token != null) {
+          navigateAndFinish(context, const LayoutScreen());
+        } else {
+          navigateAndFinish(context, const LoginScreen());
+        }
       },
     );
     super.initState();

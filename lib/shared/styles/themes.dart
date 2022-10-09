@@ -4,20 +4,20 @@ import 'package:social_app/shared/styles/colors.dart';
 
 ThemeData lightTheme = ThemeData(
   primaryColor: AppColors.steelBlue,
-  appBarTheme: const AppBarTheme(
+  appBarTheme: AppBarTheme(
     backgroundColor: Colors.white,
     centerTitle: true,
     elevation: 0.0,
     systemOverlayStyle: SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent,
+      statusBarColor: AppColors.black.withOpacity(0.3),
       statusBarIconBrightness: Brightness.light,
     ),
-    titleTextStyle: TextStyle(
+    titleTextStyle: const TextStyle(
       color: Colors.black,
       fontSize: 25.0,
       fontWeight: FontWeight.bold,
     ),
-    iconTheme: IconThemeData(
+    iconTheme: const IconThemeData(
       color: Colors.black,
     ),
   ),

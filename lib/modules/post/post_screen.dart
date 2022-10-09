@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 
-class AddProductScreen extends StatelessWidget {
-  const AddProductScreen({Key? key}) : super(key: key);
+class PostScreen extends StatelessWidget {
+  const PostScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: const [
+        children: [
           Center(
-            child: Text('Product Screen'),
-          ),
+            child: Text('Post Screen'),
+          )
         ],
       ),
     );

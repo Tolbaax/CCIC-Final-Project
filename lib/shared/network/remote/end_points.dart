@@ -3,3 +3,5 @@
 const LOGIN = 'intial/users/login';
 
 const REGISTER = 'intial/users/register';
+
+const PRODUCT = 'products';
