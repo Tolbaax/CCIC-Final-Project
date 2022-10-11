@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:social_app/layout/layout_screen.dart';
+import 'package:social_app/modules/forget_password/forget_screen.dart';
 import 'package:social_app/modules/login/cubit/cubit.dart';
 import 'package:social_app/modules/login/cubit/states.dart';
 import 'package:social_app/modules/register/register_screen.dart';
@@ -117,7 +118,9 @@ class LoginScreen extends StatelessWidget {
                               Align(
                                 alignment: Alignment.topRight,
                                 child: TextButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    navigateTo(context, ForgotScreen());
+                                  },
                                   child: const Text(
                                     'Forgot Password?',
                                     style: TextStyle(

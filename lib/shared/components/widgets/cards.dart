@@ -15,75 +15,93 @@ class ProductCard extends StatelessWidget {
     return Padding(
       padding: EdgeInsetsDirectional.only(bottom: 5.sp),
       child: AnimationConfiguration.staggeredList(
-          position: index,
-          duration: const Duration(milliseconds: 700),
-          child: SlideAnimation(
-            verticalOffset: 75.0,
-            child: FadeInAnimation(
-              child: SizedBox(
-                height: 100.h,
-                child: Card(
-                  color: AppColors.greyLight,
-                  shadowColor: AppColors.black,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          cubit![index].title.toString(),
-                          style: TextStyle(
-                              fontWeight: FontWeight.w500, fontSize: 16.sp),
-                          maxLines: 1,
+        position: index,
+        duration: const Duration(milliseconds: 800),
+        child: SlideAnimation(
+          verticalOffset: 75.0,
+          child: FadeInAnimation(
+            child: SizedBox(
+              height: 110.h,
+              child: Card(
+                color: AppColors.greyLight,
+                shadowColor: AppColors.black,
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 8, horizontal: 2),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Image.network(
+                          'https://freepngimg.com/thumb/armchair/3-armchair-png-image.png',
                         ),
-                        SizedBox(
-                          height: 8.h,
-                        ),
-                        Text(
-                          cubit[index].description.toString(),
-                          style: const TextStyle(color: AppColors.greyDark),
-                          maxLines: 2,
-                        ),
-                        SizedBox(
-                          height: 10.h,
-                        ),
-                        const Spacer(),
-                        Row(
+                      ),
+                      SizedBox(
+                        width: 10.w,
+                      ),
+                      Expanded(
+                        flex: 3,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Row(
-                              children: [
-                                Icon(
-                                  Icons.price_check,
-                                  size: 18.w,
-                                  color: AppColors.steelBlue,
-                                ),
-                                SizedBox(
-                                  width: 5.w,
-                                ),
-                                Text(
-                                    cubit[index]
-                                        .price
-                                        .toString()
-                                        .replaceAll(regex, ''),
-                                    maxLines: 1),
-                              ],
+                            Text(
+                              cubit![index].title.toString(),
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w500, fontSize: 16.sp),
+                              maxLines: 1,
+                            ),
+                            SizedBox(
+                              height: 8.h,
+                            ),
+                            Text(
+                              cubit[index].description.toString(),
+                              style: const TextStyle(color: AppColors.greyDark),
+                              maxLines: 2,
+                            ),
+                            SizedBox(
+                              height: 10.h,
                             ),
                             const Spacer(),
-                            Text(
-                              cubit[index]
-                                  .createdAt!
-                                  .substring(0, 10)
-                                  .toString(),
+                            Row(
+                              children: [
+                                Row(
+                                  children: [
+                                    Icon(
+                                      Icons.price_check,
+                                      size: 18.w,
+                                      color: AppColors.steelBlue,
+                                    ),
+                                    SizedBox(
+                                      width: 5.w,
+                                    ),
+                                    Text(
+                                      cubit[index]
+                                          .price
+                                          .toString()
+                                          .replaceAll(regex, ''),
+                                      maxLines: 1,
+                                    ),
+                                  ],
+                                ),
+                                const Spacer(),
+                                Text(
+                                  cubit[index]
+                                      .createdAt!
+                                      .substring(0, 10)
+                                      .toString(),
+                                ),
+                              ],
                             ),
                           ],
                         ),
-                      ],
-                    ),
+                      )
+                    ],
                   ),
                 ),
               ),
             ),
-          )),
+          ),
+        ),
+      ),
     );
   }
 }

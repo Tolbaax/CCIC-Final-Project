@@ -9,7 +9,7 @@ ThemeData lightTheme = ThemeData(
     centerTitle: true,
     elevation: 0.0,
     systemOverlayStyle: SystemUiOverlayStyle(
-      statusBarColor: AppColors.black.withOpacity(0.3),
+      statusBarColor: AppColors.black.withOpacity(0.5),
       statusBarIconBrightness: Brightness.light,
     ),
     titleTextStyle: const TextStyle(

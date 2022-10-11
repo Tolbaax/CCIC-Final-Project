@@ -29,14 +29,14 @@ class LayoutScreen extends StatelessWidget {
         controller: controller,
         screens: screens,
         items: navBarsItems(),
+        popActionScreens: PopActionScreensType.once,
         resizeToAvoidBottomInset: true,
         decoration: NavBarDecoration(
           colorBehindNavBar: Colors.white,
           borderRadius: BorderRadius.circular(20.0.r),
         ),
-        backgroundColor: AppColors.darkCerulean.withOpacity(0.6),
-        margin: EdgeInsets.only(
-            left: 20.sp, bottom: 10.sp, right: 20.sp, top: 10.sp),
+        backgroundColor: AppColors.black.withOpacity(0.6),
+        margin: EdgeInsets.only(left: 20.sp, bottom: 8.sp, right: 20.sp),
         screenTransitionAnimation: const ScreenTransitionAnimation(
           animateTabTransition: true,
           curve: Curves.ease,

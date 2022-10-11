@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:social_app/shared/components/widgets/buttons.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -6,11 +7,13 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
+      body: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: const [
           Center(
-            child: Text('Profile Screen'),
+            child: Center(
+              child: LogoutButton(),
+            ),
           ),
         ],
       ),

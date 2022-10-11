@@ -12,7 +12,6 @@ class DefaultTextFormFiled extends StatelessWidget {
   final Function()? onTab;
   final Function()? suffixTab;
   final IconData? suffix;
-  final IconData? prefix;
   final TextInputAction? textInputAction;
   final EdgeInsetsGeometry? contentPadding;
   const DefaultTextFormFiled({
@@ -24,7 +23,6 @@ class DefaultTextFormFiled extends StatelessWidget {
     this.validator,
     this.label,
     this.suffix,
-    this.prefix,
     this.onTab,
     this.suffixTab,
     this.onSaved,
@@ -54,17 +52,13 @@ class DefaultTextFormFiled extends StatelessWidget {
           onTap: suffixTab,
           child: Icon(suffix),
         ),
-        prefixIcon: GestureDetector(
-          onTap: () {},
-          child: Icon(prefix),
-        ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(15.0.r),
           borderSide: const BorderSide(color: Colors.grey),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(15.0.r),
-          borderSide: const BorderSide(color: Colors.grey),
+          borderSide: const BorderSide(color: Colors.blue),
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(15.0.r),

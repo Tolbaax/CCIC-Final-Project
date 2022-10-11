@@ -6,11 +6,18 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:social_app/modules/home/cubit/cubit.dart';
 import 'package:social_app/modules/home/cubit/states.dart';
 import 'package:social_app/shared/components/widgets/cards.dart';
+import 'package:social_app/shared/components/widgets/carousel_slider.dart';
 import 'package:social_app/shared/components/widgets/textFormFiled.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  final controller = PageController();
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<ProductCubit, ProductStates>(
@@ -20,16 +27,19 @@ class HomeScreen extends StatelessWidget {
         return SafeArea(
           child: Scaffold(
             body: Padding(
-              padding: EdgeInsets.all(25.r),
+              padding: EdgeInsets.symmetric(horizontal: 14.sp, vertical: 15.sp),
               child: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     DefaultTextFormFiled(
                       contentPadding: EdgeInsets.symmetric(horizontal: 15.sp),
-                      prefix: Icons.search,
                       hintText: 'Search',
                     ),
+                    SizedBox(
+                      height: 15.h,
+                    ),
+                    const CarouseBuilder(),
                     SizedBox(
                       height: 15.h,
                     ),
@@ -41,17 +51,16 @@ class HomeScreen extends StatelessWidget {
                     SizedBox(
                       height: 10.h,
                     ),
-                    Center(
-                      child: SizedBox(
-                        height: 475.h,
-                        width: double.infinity,
-                        child: AnimationLimiter(
-                          child: ListView.builder(
-                            itemCount: cubit!.length,
-                            itemBuilder: (context, index) {
-                              return ProductCard(index: index);
-                            },
-                          ),
+                    SizedBox(
+                      height: 318.h,
+                      width: double.infinity,
+                      child: AnimationLimiter(
+                        child: ListView.builder(
+                          physics: const BouncingScrollPhysics(),
+                          itemCount: cubit!.length,
+                          itemBuilder: (context, index) {
+                            return ProductCard(index: index);
+                          },
                         ),
                       ),
                     ),
