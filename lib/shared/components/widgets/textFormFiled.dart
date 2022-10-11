@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:social_app/shared/styles/colors.dart';
 
 class DefaultTextFormFiled extends StatelessWidget {
   final String? hintText;
@@ -12,6 +13,7 @@ class DefaultTextFormFiled extends StatelessWidget {
   final Function()? onTab;
   final Function()? suffixTab;
   final IconData? suffix;
+  final int? maxLength;
   final TextInputAction? textInputAction;
   final EdgeInsetsGeometry? contentPadding;
   const DefaultTextFormFiled({
@@ -25,6 +27,7 @@ class DefaultTextFormFiled extends StatelessWidget {
     this.suffix,
     this.onTab,
     this.suffixTab,
+    this.maxLength,
     this.onSaved,
     this.textInputAction,
     this.contentPadding,
@@ -39,7 +42,9 @@ class DefaultTextFormFiled extends StatelessWidget {
       onSaved: onSaved,
       onTap: onTab,
       validator: validator,
+      maxLength: maxLength,
       textInputAction: textInputAction,
+      maxLines: inputType == TextInputType.multiline ? null : 1,
       style: const TextStyle(fontWeight: FontWeight.w500),
       decoration: InputDecoration(
         fillColor: Colors.white,
@@ -58,7 +63,7 @@ class DefaultTextFormFiled extends StatelessWidget {
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(15.0.r),
-          borderSide: const BorderSide(color: Colors.blue),
+          borderSide: const BorderSide(color: AppColors.darkCerulean),
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(15.0.r),

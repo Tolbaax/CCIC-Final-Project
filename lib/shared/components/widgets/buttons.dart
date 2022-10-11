@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:social_app/shared/components/constants.dart';
+import 'package:social_app/shared/components/widgets/toastMessage.dart';
 import 'package:social_app/shared/styles/colors.dart';
 
 class DefaultButton extends StatelessWidget {
@@ -66,6 +67,8 @@ class LogoutButton extends StatelessWidget {
                 TextButton(
                   onPressed: () {
                     signOut(context);
+                    showToast(
+                        text: 'Logout Successfully', state: ToastState.success);
                   },
                   child: const Text(
                     'Yes',

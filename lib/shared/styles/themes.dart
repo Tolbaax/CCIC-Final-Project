@@ -12,8 +12,8 @@ ThemeData lightTheme = ThemeData(
       statusBarColor: AppColors.black.withOpacity(0.5),
       statusBarIconBrightness: Brightness.light,
     ),
-    titleTextStyle: const TextStyle(
-      color: Colors.black,
+    titleTextStyle: TextStyle(
+      color: AppColors.black.withOpacity(0.9),
       fontSize: 25.0,
       fontWeight: FontWeight.bold,
     ),

@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+import 'package:lottie/lottie.dart';
 import 'package:social_app/modules/home/cubit/cubit.dart';
 import 'package:social_app/modules/home/cubit/states.dart';
 import 'package:social_app/shared/components/widgets/cards.dart';
 import 'package:social_app/shared/components/widgets/carousel_slider.dart';
 import 'package:social_app/shared/components/widgets/textFormFiled.dart';
+import 'package:social_app/shared/styles/images.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -51,19 +53,23 @@ class _HomeScreenState extends State<HomeScreen> {
                     SizedBox(
                       height: 10.h,
                     ),
-                    SizedBox(
-                      height: 318.h,
-                      width: double.infinity,
-                      child: AnimationLimiter(
-                        child: ListView.builder(
-                          physics: const BouncingScrollPhysics(),
-                          itemCount: cubit!.length,
-                          itemBuilder: (context, index) {
-                            return ProductCard(index: index);
-                          },
-                        ),
-                      ),
-                    ),
+                    cubit!.isNotEmpty
+                        ? SizedBox(
+                            height: 325.h,
+                            width: double.infinity,
+                            child: AnimationLimiter(
+                              child: ListView.builder(
+                                physics: const BouncingScrollPhysics(),
+                                itemCount: cubit.length,
+                                itemBuilder: (context, index) {
+                                  return ProductCard(index: index);
+                                },
+                              ),
+                            ),
+                          )
+                        : Center(
+                            child: Lottie.asset(ImageAssets.empty),
+                          ),
                   ],
                 ),
               ),

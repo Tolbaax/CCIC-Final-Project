@@ -119,7 +119,7 @@ class LoginScreen extends StatelessWidget {
                                 alignment: Alignment.topRight,
                                 child: TextButton(
                                   onPressed: () {
-                                    navigateTo(context, ForgotScreen());
+                                    navigateTo(context, const ForgotScreen());
                                   },
                                   child: const Text(
                                     'Forgot Password?',

@@ -89,6 +89,9 @@ class ProductCard extends StatelessWidget {
                                       .substring(0, 10)
                                       .toString(),
                                 ),
+                                SizedBox(
+                                  width: 5.w,
+                                ),
                               ],
                             ),
                           ],

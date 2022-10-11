@@ -61,7 +61,7 @@ class RegisterCubit extends Cubit<RegisterStates> {
       });
     }
     if (profileImage == null) {
-      showToast(text: 'Select An Image', state: ToastState.error);
+      showToast(text: 'Select an image', state: ToastState.error);
     }
   }
 

@@ -38,19 +38,23 @@ class ForgotScreen extends StatelessWidget {
               'No worries, we\'ll send you reset instructions',
               style: TextStyle(fontSize: 16.0, color: Colors.grey),
             ),
-            const Padding(
+            Padding(
               padding: EdgeInsets.only(
-                top: 40.0,
-                right: 25.0,
-                left: 25.0,
+                top: 35.0.sp,
+                right: 25.0.sp,
+                left: 25.0.sp,
               ),
               child: DefaultTextFormFiled(
                 label: 'Email',
                 inputType: TextInputType.emailAddress,
+                contentPadding: EdgeInsets.symmetric(
+                  horizontal: 15.sp,
+                  vertical: 16,
+                ),
               ),
             ),
             SizedBox(
-              height: 20.h,
+              height: 30.h,
             ),
             Padding(
               padding: const EdgeInsets.only(

@@ -28,6 +28,7 @@ class LayoutScreen extends StatelessWidget {
         context,
         controller: controller,
         screens: screens,
+        stateManagement: true,
         items: navBarsItems(),
         popActionScreens: PopActionScreensType.once,
         resizeToAvoidBottomInset: true,

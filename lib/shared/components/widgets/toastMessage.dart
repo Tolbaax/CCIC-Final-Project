@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:social_app/shared/styles/colors.dart';
 
 void showToast({
   required String text,
@@ -23,7 +24,7 @@ Color? chooseToastColor(ToastState state) {
 
   switch (state) {
     case ToastState.success:
-      color = Colors.green;
+      color = AppColors.black.withOpacity(0.8);
       break;
     case ToastState.error:
       break;

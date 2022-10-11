@@ -5,6 +5,12 @@ void navigateTo(context, widget) {
 }
 
 void navigateAndFinish(context, widget) {
-  Navigator.pushAndRemoveUntil(context,
-      MaterialPageRoute(builder: (context) => widget), (route) => false);
+  Navigator.of(context, rootNavigator: true).pushAndRemoveUntil(
+    MaterialPageRoute(
+      builder: (BuildContext context) {
+        return widget;
+      },
+    ),
+    (_) => false,
+  );
 }
