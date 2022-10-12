@@ -22,18 +22,26 @@ class BuildProfileImage extends StatelessWidget {
           Positioned(
             bottom: 8.h,
             right: 2.w,
-            child: buildCameraIcon(context),
+            child: BuildCameraIcon(
+              onPressed: () {
+                RegisterCubit.get(context).getProfileImage();
+              },
+            ),
           ),
         ],
       ),
     );
   }
+}
 
-  Widget buildCameraIcon(context) {
+class BuildCameraIcon extends StatelessWidget {
+  final VoidCallback? onPressed;
+  const BuildCameraIcon({Key? key, required this.onPressed}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     return IconButton(
-      onPressed: () {
-        RegisterCubit.get(context).getProfileImage();
-      },
+      onPressed: onPressed,
       icon: CircleAvatar(
         child: Container(
           decoration: BoxDecoration(
@@ -81,6 +89,36 @@ class BuildImage extends StatelessWidget {
               fit: BoxFit.cover,
             )
           : Lottie.asset(ImageAssets.profileImage),
+    );
+  }
+}
+
+class BuildEditButton extends StatelessWidget {
+  final Function()? onTap;
+  const BuildEditButton({Key? key, this.onTap}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(
+            Icons.edit,
+            size: 14.sp,
+            color: AppColors.darkCerulean,
+          ),
+          SizedBox(width: 5.w),
+          Text(
+            'Edit',
+            style: TextStyle(
+              fontSize: 16.0.sp,
+              color: AppColors.darkCerulean,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

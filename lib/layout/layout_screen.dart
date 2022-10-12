@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:social_app/modules/home/home_screen.dart';
 import 'package:social_app/modules/post/post_screen.dart';
-import 'package:social_app/modules/profile/profile_screen.dart';
+import 'package:social_app/modules/setting/setting_screen.dart';
 import 'package:social_app/shared/components/widgets/navBarsItems.dart';
 import 'package:social_app/shared/styles/colors.dart';
 
@@ -15,7 +15,7 @@ class LayoutScreen extends StatelessWidget {
     List<Widget> screens = [
       const HomeScreen(),
       const PostScreen(),
-      const ProfileScreen(),
+      const SettingsScreen(),
     ];
     return Scaffold(
       extendBody: true,

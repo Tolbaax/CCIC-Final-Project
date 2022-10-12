@@ -21,8 +21,8 @@ List<PersistentBottomNavBarItem> navBarsItems() {
       activeColorSecondary: Colors.white,
     ),
     PersistentBottomNavBarItem(
-      icon: const Icon(Icons.perm_identity),
-      title: ("Profile"),
+      icon: const Icon(Icons.settings),
+      title: ("Settings"),
       textStyle: const TextStyle(fontWeight: FontWeight.w500),
       activeColorPrimary: CupertinoColors.systemTeal,
       inactiveColorPrimary: Colors.white,

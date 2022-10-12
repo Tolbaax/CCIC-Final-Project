@@ -28,6 +28,7 @@ dependencies:
   dotted_border: ^2.0.0+2
   date_time_picker: ^2.1.0
   intl: ^0.17.0
+  animations: ^2.0.7
 
 dev_dependencies:
   flutter_test:
@@ -42,15 +43,15 @@ flutter:
   assets:
      - assets/json/
 
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
-
+  fonts:
+    - family: DefaultFont
+      fonts:
+        - asset: assets/fonts/BalooBhaijaan2-Regular.ttf
+        - asset: assets/fonts/BalooBhaijaan2-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/BalooBhaijaan2-SemiBold.ttf
+          weight: 700
+        - asset: assets/fonts/BalooBhaijaan2-Bold.ttf
+          weight: 800
+        - asset: assets/fonts/BalooBhaijaan2-ExtraBold.ttf
+          weight: 900

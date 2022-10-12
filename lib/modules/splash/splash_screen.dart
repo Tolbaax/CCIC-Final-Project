@@ -19,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     Timer(
-      const Duration(seconds: 2),
+      const Duration(seconds: 3),
       () {
         if (token != null) {
           navigateAndFinish(context, const LayoutScreen());
@@ -34,8 +34,11 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Lottie.asset(ImageAssets.splash),
+      body: Lottie.asset(
+        ImageAssets.splash,
+        fit: BoxFit.fill,
+        width: double.infinity,
+        height: double.infinity,
       ),
     );
   }

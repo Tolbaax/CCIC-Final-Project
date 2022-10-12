@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:social_app/shared/components/constants.dart';
+import 'package:social_app/shared/components/widgets/ListTile.dart';
 import 'package:social_app/shared/components/widgets/toastMessage.dart';
 import 'package:social_app/shared/styles/colors.dart';
 
@@ -76,25 +77,14 @@ class LogoutButton extends StatelessWidget {
                   ),
                 ),
               ],
-              backgroundColor: AppColors.black.withOpacity(0.9),
+              backgroundColor: AppColors.black,
             );
           },
         );
       },
-      child: Row(
-        children: const [
-          Icon(
-            Icons.logout,
-            color: AppColors.black,
-          ),
-          SizedBox(
-            width: 8,
-          ),
-          Text(
-            'Log Out',
-            style: TextStyle(color: AppColors.black, fontSize: 20),
-          ),
-        ],
+      child: const DefaultListTile(
+        icon: Icons.logout_rounded,
+        title: 'Log out',
       ),
     );
   }

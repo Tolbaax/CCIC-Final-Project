@@ -15,7 +15,7 @@ ThemeData lightTheme = ThemeData(
     titleTextStyle: TextStyle(
       color: AppColors.black.withOpacity(0.9),
       fontSize: 25.0,
-      fontWeight: FontWeight.bold,
+      fontWeight: FontWeight.w500,
     ),
     iconTheme: const IconThemeData(
       color: Colors.black,
