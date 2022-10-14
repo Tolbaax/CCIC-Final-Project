@@ -53,6 +53,7 @@ class RegisterCubit extends Cubit<RegisterStates> {
       });
       await dio.postData(path: REGISTER, data: formData).then(
         (value) {
+
           emit(RegisterSuccessState());
         },
       ).catchError((error) {

@@ -14,13 +14,10 @@ class SettingsScreen extends StatelessWidget {
         title: const Text('Settings'),
       ),
       body: Padding(
-        padding: EdgeInsets.all(20.sp),
+        padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(
-              height: 5.h,
-            ),
             Text(
               'Account',
               style: TextStyle(

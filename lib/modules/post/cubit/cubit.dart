@@ -47,7 +47,10 @@ class PostHandlerCubit extends Cubit<PostHandlerStates> {
         'title': titleController.text,
         'active': 1,
         'price': priceController.text,
-        'image': await MultipartFile.fromFile(postImage!.path),
+        'image[]': postImage != null
+            ? await MultipartFile.fromFile(postImage!.path,
+                filename: postImage!.path.split('/').last)
+            : null,
         'description': descController.text,
         'category_id': 4,
       });
