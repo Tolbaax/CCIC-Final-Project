@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:social_app/modules/home/cubit/cubit.dart';
 import 'package:social_app/modules/home/cubit/states.dart';
+import 'package:social_app/modules/post/cubit/cubit.dart';
+import 'package:social_app/modules/profile/cubit/cubit.dart';
 import 'package:social_app/modules/splash/splash_screen.dart';
 import 'package:social_app/shared/components/constants.dart';
 import 'package:social_app/shared/network/lcoal/cache_helper.dart';
@@ -28,9 +30,9 @@ class ProductApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
         providers: [
-          BlocProvider(
-            create: (BuildContext context) => ProductCubit()..getProducts(),
-          ),
+          BlocProvider(create: (BuildContext context) => ProductCubit()),
+          BlocProvider(create: (BuildContext context) => ProfileCubit()),
+          BlocProvider(create: (BuildContext context) => PostHandlerCubit()),
         ],
         child: BlocConsumer<ProductCubit, ProductStates>(
           listener: (context, state) {},

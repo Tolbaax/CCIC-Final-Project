@@ -28,6 +28,7 @@ dependencies:
   date_time_picker: ^2.1.0
   intl: ^0.17.0
   animations: ^2.0.7
+  connectivity_plus: ^2.3.9
 
 dev_dependencies:
   flutter_test:

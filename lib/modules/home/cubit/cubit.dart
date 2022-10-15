@@ -1,3 +1,4 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:social_app/models/product.dart';
 import 'package:social_app/modules/home/cubit/states.dart';
@@ -20,5 +21,9 @@ class ProductCubit extends Cubit<ProductStates> {
         ProductErrorState(msg: resp.data['msg']),
       );
     }
+  }
+
+  void checkConnectivity() async {
+    await Connectivity().checkConnectivity();
   }
 }

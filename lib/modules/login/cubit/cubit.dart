@@ -1,10 +1,12 @@
 import 'dart:developer';
 
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:social_app/models/login.dart';
 import 'package:social_app/modules/login/cubit/states.dart';
+import 'package:social_app/shared/components/widgets/toastMessage.dart';
 import 'package:social_app/shared/network/remote/dio_helper.dart';
 import 'package:social_app/shared/network/remote/end_points.dart';
 
@@ -32,20 +34,28 @@ class LoginCubit extends Cubit<LoginStates> {
   DioHelper dio = DioHelper();
   void userLogin() {
     if (formKey.currentState!.validate()) {
-      emit(LoginLoadingState());
-      var formData = FormData.fromMap({
-        'email': emailController.text,
-        'password': passwordController.text,
+      Connectivity().checkConnectivity().then((value) {
+        if (value != ConnectivityResult.mobile &&
+            value != ConnectivityResult.wifi) {
+          showToast(text: 'No Internet Connection', state: ToastState.error);
+          return;
+        } else {
+          emit(LoginLoadingState());
+          var formData = FormData.fromMap({
+            'email': emailController.text,
+            'password': passwordController.text,
+          });
+          dio.postData(path: LOGIN, data: formData).then((value) {
+            loginModel = LoginModel.fromJson(value.data);
+            emit(LoginSuccessState(loginModel: loginModel!));
+          }).catchError(
+            (error) {
+              emit(LoginErrorState(error.toString()));
+              log(error.toString());
+            },
+          );
+        }
       });
-      dio.postData(path: LOGIN, data: formData).then((value) {
-        loginModel = LoginModel.fromJson(value.data);
-        emit(LoginSuccessState(loginModel: loginModel!));
-      }).catchError(
-        (error) {
-          emit(LoginErrorState(error.toString()));
-          log(error.toString());
-        },
-      );
     }
   }
 }
