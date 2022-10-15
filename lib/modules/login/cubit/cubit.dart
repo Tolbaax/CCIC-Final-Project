@@ -31,19 +31,21 @@ class LoginCubit extends Cubit<LoginStates> {
   LoginModel? loginModel;
   DioHelper dio = DioHelper();
   void userLogin() {
-    emit(LoginLoadingState());
-    var formData = FormData.fromMap({
-      'email': emailController.text,
-      'password': passwordController.text,
-    });
-    dio.postData(path: LOGIN, data: formData).then((value) {
-      loginModel = LoginModel.fromJson(value.data);
-      emit(LoginSuccessState(loginModel: loginModel!));
-    }).catchError(
-      (error) {
-        emit(LoginErrorState(error.toString()));
-        log(error.toString());
-      },
-    );
+    if (formKey.currentState!.validate()) {
+      emit(LoginLoadingState());
+      var formData = FormData.fromMap({
+        'email': emailController.text,
+        'password': passwordController.text,
+      });
+      dio.postData(path: LOGIN, data: formData).then((value) {
+        loginModel = LoginModel.fromJson(value.data);
+        emit(LoginSuccessState(loginModel: loginModel!));
+      }).catchError(
+        (error) {
+          emit(LoginErrorState(error.toString()));
+          log(error.toString());
+        },
+      );
+    }
   }
 }

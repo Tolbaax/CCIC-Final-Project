@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:lottie/lottie.dart';
 import 'package:social_app/modules/home/cubit/cubit.dart';
 import 'package:social_app/modules/home/cubit/states.dart';
@@ -57,14 +56,12 @@ class _HomeScreenState extends State<HomeScreen> {
                         ? SizedBox(
                             height: 325.h,
                             width: double.infinity,
-                            child: AnimationLimiter(
-                              child: ListView.builder(
-                                physics: const BouncingScrollPhysics(),
-                                itemCount: cubit.length,
-                                itemBuilder: (context, index) {
-                                  return ProductCard(index: index);
-                                },
-                              ),
+                            child: ListView.builder(
+                              physics: const BouncingScrollPhysics(),
+                              itemCount: cubit.length,
+                              itemBuilder: (context, index) {
+                                return ProductCard(index: index);
+                              },
                             ),
                           )
                         : Center(

@@ -13,6 +13,7 @@ import 'package:social_app/shared/components/widgets/navigation.dart';
 import 'package:social_app/shared/components/widgets/textFormFiled.dart';
 import 'package:social_app/shared/components/widgets/toastMessage.dart';
 import 'package:social_app/shared/network/lcoal/cache_helper.dart';
+import 'package:social_app/shared/resources/input_validator.dart';
 import 'package:social_app/shared/styles/colors.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -100,6 +101,7 @@ class LoginScreen extends StatelessWidget {
                                 hintText: 'Enter your Email',
                                 inputType: TextInputType.emailAddress,
                                 textInputAction: TextInputAction.next,
+                                validator: emailValidator,
                               ),
                               SizedBox(
                                 height: 25.h,
@@ -110,6 +112,7 @@ class LoginScreen extends StatelessWidget {
                                 hintText: 'Enter your Password',
                                 secure: cubit.isPassword,
                                 inputType: TextInputType.visiblePassword,
+                                validator: passwordValidator,
                                 suffix: cubit.suffix,
                                 suffixTab: () {
                                   cubit.changeVisibility();
